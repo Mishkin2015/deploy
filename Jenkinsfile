@@ -11,15 +11,12 @@ pipeline {
         parallel(
           "Test xAPI": {
             sh 'bash ./tests/checkURL.sh -u localhost/data/xAPI/about'
-            
           },
           "Test API": {
             sh 'bash ./tests/checkURL.sh -u localhost/api'
-            
           },
           "Test UI": {
             sh 'bash ./tests/checkURL.sh -u localhost'
-            
           }
         )
       }
@@ -30,6 +27,11 @@ pipeline {
         sh 'cat /var/log/learninglocker/xapi_stdout*.log'
         sh 'cat /var/log/learninglocker/api_stdout*.log'
         sh 'cat /var/log/learninglocker/ui_stdout*.log'
+        sh 'cat /var/log/learninglocker/worker_stdout*.log'
+        sh 'cat /var/log/learninglocker/xapi_stderr*.log'
+        sh 'cat /var/log/learninglocker/api_stderr*.log'
+        sh 'cat /var/log/learninglocker/ui_stderr*.log'
+        sh 'cat /var/log/learninglocker/worker_stderr*.log'
       }
     }
   }
