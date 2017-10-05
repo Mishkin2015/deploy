@@ -1,9 +1,9 @@
 pipeline {
   agent any
   stages {
-    stage('cURL install') {
+    stage('Run deploy script') {
       steps {
-        sh 'sudo su -c "curl -o- -L http://lrnloc.kr/installv2 > deployll.sh && bash deployll.sh -y 3"'
+        sh 'sudo su -c "bash llv2_build.sh -y 3"'
       }
     }
   }
